@@ -8,7 +8,7 @@ Modified by Claude
 You can download the script using `wget`:
 
 ```bash
-wget https://github.com/cornplus/photoplus-downloader-python/raw/refs/heads/main/download_photos.py
+wget https://github.com/cornultra/photoplus-downloader-python/raw/refs/heads/main/download_photos.py
 ```
 
 ## Usage

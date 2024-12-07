@@ -46,9 +46,9 @@ def download_all_images(list, dir):
         for future in tqdm(as_completed(futures), total=len(futures), desc="Downloading images"):
             future.result()
 
-def get_all_images(id, count):
+def get_all_images(id, count, name=None):
     t = int(time.time() * 1000)  # Current timestamp in milliseconds
-    dir = f"./dist/{id}"
+    dir = f"./dist/{name or id}"  # Use 'name' if provided, otherwise use 'id'
     
     data = {
         "activityNo": id,
@@ -82,10 +82,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Download photos from PhotoPlus")
     parser.add_argument("--id", type=int, help="PhotoPlus ID (e.g., 87654321)", required=True)
     parser.add_argument("--count", type=int, default=COUNT, help="Number of photos to download")
-    
+    parser.add_argument("--name", type=str, default=None, help="Custom folder name")
+
     args = parser.parse_args()
     
     if args.id:
-        get_all_images(args.id, args.count)
+        get_all_images(args.id, args.count, args.name)
     else:
         print("Wrong ID")
